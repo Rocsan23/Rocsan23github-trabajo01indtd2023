@@ -1,0 +1,79 @@
+---
+title: "Problema 2"
+author: "Rocío"
+date: '2023-10-18'
+output: pdf_document
+---
+
+Manu y Pepe son dos amigos que están haciendo el camino de Santiago. Acaban de llegar a la ciudad de Vigo y tienen que decidir donde alojarse.Estas son las distintas opciones.
+
+-   El Albergue Público de Vigo:es un albergue publico que cuesta 8€ la noche por persona. Este albergue tiene una zona pública donde poder calentar la comida. Para ello, tendrian que ir al supermercado y comprar comida.La compra del supermercado les saldria unos 10€.
+
+-   Hotal Vigo: este hostal les ofrece una habitacion donde dormir que les saldria unos 12€ por persona. El hostal no tiene zona para preparar comida, por lo tanto, tendrian que salir a cenar a un restaurante que hay al lado. El menu del restaurante les cuesta unos 15€ por persona.
+
+-   Hotel: esta tercera opcion incluye alojamiento y buffet por 40€ por persona.
+
+¿ Qué opciona seria la mejor si su objetivo es minimizar los costes?
+
+
+#Planteamiento
+
+Un decisor, dos personas.
+
+Modelo costes desfavorables
+
+Alternativas
+
+-   d1:Albergue público
+
+-   d2:Hostal
+
+-   d3:Hotel
+
+Estados de la naturaleza
+
+-   e1:dormir en el alojamiento y cenar
+
+-   e2:dormir directamente sin cenar
+
+Valoraciones
+
+-   Estados e1
+
+x1,1 = 8 * 2 + 10 * 2=36
+
+x2,1= 24 + 30 =54
+
+x3,1= 40* 2 =80
+
+-   Estados e2
+
+-   x1,2= 8 * 2=16*
+
+-   x2,2= 12*2 = 24
+
+-   x3,2= 40*2 = 80
+
+Introduccion de datos
+
+```{r}
+source("teoriadecision_funciones_incertidumbre.R"
+,encoding="UTF-8")
+
+m<-crea.tablaX(c(36,12,64,24,80,80),
+               numalternativas =3 ,
+               numestados = 2)
+m
+
+rownames(m)<-c("Albergue Publico", "Hostal","Hotel ")
+colnames(m)<-c("dormir y cenar", " solo dormir")
+m
+```
+
+**Solución del problema**
+
+```{r}
+sol<-criterio.Todos(m, favorable = F, alfa=0.5)
+sol
+```
+Vemos que la mejor opcion es la del albergue publico 

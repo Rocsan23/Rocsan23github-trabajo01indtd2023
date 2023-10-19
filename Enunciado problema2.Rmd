@@ -1,0 +1,21 @@
+---
+title: "Enunciado problema 2"
+author: "Rocío"
+date: '2023-10-19'
+output: pdf_document
+---
+
+
+
+
+\##**Problema 2**
+
+Manu y Pepe son dos amigos que están haciendo el camino de Santiago. Acaban de llegar a la ciudad de Vigo y tienen que decidir donde alojarse.Estas son las distintas opciones.
+
+-   El Albergue Público de Vigo:es un albergue publico que cuesta 8€ la noche por persona. Este albergue tiene una zona pública donde poder calentar la comida. Para ello, tendrian que ir al supermercado y comprar comida.La compra del supermercado les saldria unos 10€.
+
+-   Hotal Vigo: este hostal les ofrece una habitacion donde dormir que les saldria unos 12€ por persona. El hostal no tiene zona para preparar comida, por lo tanto, tendrian que salir a cenar a un restaurante que hay al lado. El menu del restaurante les cuesta unos 15€ por persona.
+
+-   Hotel: esta tercera opcion incluye alojamiento y buffet por 40€ por persona.
+
+¿ Qué opciona seria la mejor si su objetivo es minimizar los costes?

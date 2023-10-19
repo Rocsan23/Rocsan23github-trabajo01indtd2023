@@ -1,0 +1,198 @@
+---
+title: "Problema 2"
+author: "Rocío"
+date: '2023-10-18'
+output: pdf_document
+---
+
+# Problema 1
+
+```{r echo=FALSE}
+source("teoriadecision_funciones_incertidumbre.R", encoding = "UTF-8")
+
+```
+
+En primer lugar, creamos una tabla con datos aleatorios para trabajar tanto en situaciones favorables como en desfavorables. Nos quedaria la siguiente tabla.
+
+```{r echo=FALSE}
+m1<-crea.tablaX(c(2,3,4,-1,7,8,
+                  6,2,4,5,1,0),
+                numalternativas =4 ,
+                numestados = 3)
+knitr::kable(m1)
+
+
+```
+
+Primero vamos a solucionarlo en situacion favorable aplicando todos los criterios.
+
+***Metodo Wald***
+
+```{r echo=FALSE}
+sol_w<-criterio.Wald(m1)
+```
+
+Segun el método Wald Las mejores soluciones son 1 y 3 con un valor optimo de 2
+
+***Metodo Optimista***
+
+```{r echo=FALSE}
+sol_op<-criterio.Optimista(m1)
+```
+
+La mejor solucion según el criterio optimista es la segunda, con un valor optimo de 8
+
+***Criterio Hurwicz***
+
+```{r echo=FALSE}
+sol_hu<-criterio.Hurwicz(m1)
+
+```
+
+La mejor solucion segun el criterio Hurwicz es la numero tres, con un valor optimo de 3.2
+
+Ahora vamos a dibujar el grafico que pertenece al criterio de Hurwicz
+
+```{r echo=FALSE}
+dibuja.criterio.Hurwicz(m1)
+```
+
+***Criterio savage***
+
+```{r echo=FALSE}
+sol_sa<-criterio.Savage(m1)
+```
+
+La mejor solucion desgun el criterio savage es la primera, con un valor optimo de 4. 
+
+***Criterio Laplace***
+
+```{r echo=FALSE}
+sol_la<-criterio.Laplace(m1)
+```
+
+La mejor solucion segun el criterio Laplace es la segunda, con un valor optimo de 4.6666
+
+***Criterio Punto Ideal***
+
+```{r echo=FALSE}
+sol_pi<-criterio.PuntoIdeal(m1)
+```
+
+La mejor solución según el criterio de Punto Ideal es la número tres, con un valor optimo de 6.403
+
+Por lo tanto, como conclusión final, podemos decir que la mejor solcion para este problema es la numero tres.
+
+Ahora, vamos a trabajar con la misma tabla pero vamos a hacerlo es situacion desfavorable.
+
+***Criterio Wald***
+
+```{r echo=FALSE}
+
+sol_des_wa<-criterio.Wald(m1,favorable = F)
+
+```
+
+La mejor solucion segun el metodo wald es la primera, con un valor optimo de 4. 
+
+***Criterio optimista***
+
+```{r echo=FALSE}
+sol_des_op<-criterio.Optimista(m1,favorable = F)
+```
+
+La mejor solucion segun el criterio optimista es la segunda, con un valor optimo de -1.
+
+***Criterio Hurwicz***
+
+```{r echo=FALSE}
+sol_des_Hu<-criterio.Hurwicz(m1,favorable = F)
+```
+
+La mejor solucion segun el criterio Hurwicz es la primera, con un valor optimo de 3.4.
+
+***Criterio Savage***
+
+```{r echo=FALSE}
+sol_des_sav<-criterio.Savage(m1, favorable = F)
+```
+
+La mejor solción según el criterio savage es d1
+
+***Criterio Laplace***
+
+```{r echo=FALSE}
+sol_des_La<-criterio.Laplace(m1, favorable = F)
+```
+
+La mejor solución según el criterio Laplace es la primera, con un valor optimo de 2. 
+
+***Criterio Punto Ideal***
+
+```{r echo=FALSE}
+sol_des_PI<-criterio.PuntoIdeal(m1, favorable = F)
+```
+
+La mejor solucion segun el criterio de punto ideal es la primera, con un valor optimo de 5.3851
+
+Por lo tanto, como conclusion final, podemos decir que la mejor solcuion para el caso desfavorable es la primera opcion. 
+
+# Problema 2
+
+Manu y Pepe son dos amigos que están haciendo el camino de Santiago. Acaban de llegar a la ciudad de Vigo y tienen que decidir donde alojarse.Estas son las distintas opciones.
+
+-   El Albergue Público de Vigo:es un albergue publico que cuesta 8€ la noche por persona. Este albergue tiene una zona pública donde poder calentar la comida. Para ello, tendrian que ir al supermercado y comprar comida.La compra del supermercado les saldria unos 10€.
+
+-   Hotal Vigo: este hostal les ofrece una habitacion donde dormir que les saldria unos 12€ por persona. El hostal no tiene zona para preparar comida, por lo tanto, tendrian que salir a cenar a un restaurante que hay al lado. El menu del restaurante les cuesta unos 15€ por persona.
+
+-   Hotel: esta tercera opcion incluye alojamiento y buffet por 40€ por persona.
+
+¿ Qué opciona seria la mejor si su objetivo es minimizar los costes?
+
+**Planteamiento**
+
+Un decisor, dos personas.
+
+Modelo costes desfavorables
+
+Alternativas
+
+-   d1:Albergue público
+
+-   d2:Hostal
+
+-   d3:Hotel
+
+Estados de la naturaleza
+
+-   e1:dormir en el alojamiento y cenar
+
+-   e2:dormir directamente sin cenar
+
+
+
+
+```{r echo=FALSE}
+source("teoriadecision_funciones_incertidumbre.R"
+,encoding="UTF-8")
+library(knitr)
+
+m<-crea.tablaX(c(36,12,64,24,80,80),
+               numalternativas =3 ,
+               numestados = 2)
+
+
+rownames(m)<-c("Albergue Publico", "Hostal","Hotel ")
+colnames(m)<-c("dormir y cenar", " solo dormir")
+
+```
+
+Solución del problema
+
+```{r echo=FALSE}
+sol<-criterio.Todos(m, favorable = F, alfa=0.5)
+knitr::kable(sol)
+
+```
+
+Vemos que la mejor opcion es la del albergue publico
